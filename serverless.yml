@@ -26,3 +26,4 @@ functions:
   - ${file(./menuItemController.yml)}
   - ${file(./ingredientsController.yml)}
   - ${file(./allergenController.yml)}
+  - ${file(./authorizer.yml)}
