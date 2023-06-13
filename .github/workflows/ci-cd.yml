@@ -37,6 +37,7 @@ jobs:
         run: npm install -g serverless
 
       - name: Deploy to AWS Lambda
-        working-directory: ./
-        run: serverless deploy
+        run: |
+          cd ./
+          npx serverless deploy
 
