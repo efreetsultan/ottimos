@@ -13,10 +13,16 @@ provider:
             - dynamodb:*
           Resource:
             - arn:aws:dynamodb:eu-west-2:837009352646:table/Customer
+            - arn:aws:dynamodb:eu-west-2:837009352646:table/Order
+            - arn:aws:dynamodb:eu-west-2:837009352646:table/MenuItem
 resources:
   ${file(./dynamoDb.yml)}
+  ${file(./cognito.yml)}
 functions:
   ${file(./customerController.yml)}
+  ${file(./orderController.yml)}
+  ${file(./menuItemController.yml)}
+
 
 
   

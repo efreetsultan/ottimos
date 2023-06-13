@@ -12,6 +12,8 @@
     "@middy/core": "^4.5.1",
     "@middy/http-json-body-parser": "^4.5.1",
     "aws-sdk": "^2.1396.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwk-to-pem": "^2.0.5",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "path": "^0.12.7",

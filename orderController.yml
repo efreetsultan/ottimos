@@ -1,0 +1,42 @@
+  addOrder:
+    handler: functions/orderController/addOrder.handler
+    events:
+      - httpApi:
+          path: /api/order/add
+          method: POST
+          authorizer:
+            name: myAuthorizer
+            type: COGNITO_USER_POOLS
+  fetchOrders:
+    handler: functions/orderController/fetchOrders.handler
+    environment:
+      GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
+    events:
+      - httpApi:
+          path: /api/Order/get
+          method: GET
+          authorizer:
+            name: myAuthorizer
+            type: COGNITO_USER_POOLS
+  fetchOrderById:
+    handler: functions/orderController/fetchOrderById.handler
+    events:
+      - httpApi:
+          path: /api/order/get/{id}
+          method: GET
+          authorizer:
+            name: myAuthorizer
+            type: COGNITO_USER_POOLS
+  updateOrderById:
+    handler: functions/orderController/updateOrderById.handler
+    events:
+      - httpApi:
+          path: /api/order/update/{id}
+          method: PATCH
+  deleteOrderById:
+    handler: functions/orderController/deleteOrderById.handler
+    events:
+      - httpApi:
+          path: /api/order/delete/{id}
+          method: DELETE

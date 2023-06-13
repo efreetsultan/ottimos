@@ -1,0 +1,36 @@
+  MyUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        UserPoolName: my-user-pool
+        AutoVerifiedAttributes:
+          - email
+        Policies:
+          PasswordPolicy:
+            MinimumLength: 8
+        Schema:
+          - Name: email
+            AttributeDataType: String
+            Required: true
+          - Name: username
+            AttributeDataType: String
+            Required: true
+
+  MyUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: my-user-pool-client
+      UserPoolId:
+        Ref: MyUserPool
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      SupportedIdentityProviders:
+        - Google
+      CallbackURLs:
+        - https://example.com/callback
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - email
+        - openid
+      AllowedOAuthFlowsUserPoolClient: true

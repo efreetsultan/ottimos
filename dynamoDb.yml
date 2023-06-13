@@ -1,12 +1,76 @@
 Resources:
-    CustomerTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: Customer
-        BillingMode: PAY_PER_REQUEST
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
+  CustomerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Customer
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  OrderTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Order
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: customerId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: CustomerIndex
+          KeySchema:
+            - AttributeName: customerId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  MenuItemTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: MenuItem
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  IngredientTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Ingredient
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: AllergenIndex
+          KeySchema:
+            - AttributeName: allergenName
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  AllergenTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Allergen
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: allergenName
+          AttributeType: S
+      KeySchema:
+        - AttributeName: allergenName
+          KeyType: HASH

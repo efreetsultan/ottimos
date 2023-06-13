@@ -1,0 +1,30 @@
+  addAllergen:
+    handler: functions/allergenController/addAllergen.handler
+    events:
+      - httpApi:
+          path: /api/allergen/add
+          method: POST
+  fetchAllergens:
+    handler: functions/allergenController/fetchAllergens.handler
+    events:
+      - httpApi:
+          path: /api/allergen/get
+          method: GET
+  fetchAllergenById:
+    handler: functions/allergenController/fetchAllergenById.handler
+    events:
+      - httpApi:
+          path: /api/allergen/get/{id}
+          method: GET
+  updateAllergenById:
+    handler: functions/allergenController/updateAllergenById.handler
+    events:
+      - httpApi:
+          path: /api/allergen/update/{id}
+          method: PATCH
+  deleteAllergenById:
+    handler: functions/allergenController/deleteAllergenById.handler
+    events:
+      - httpApi:
+          path: /api/allergen/delete/{id}
+          method: DELETE

@@ -1,0 +1,30 @@
+  addIngredient:
+    handler: functions/ingredientController/addIngredient.handler
+    events:
+      - httpApi:
+          path: /api/ingredient/add
+          method: POST
+  fetchIngredients:
+    handler: functions/ingredientController/fetchIngredients.handler
+    events:
+      - httpApi:
+          path: /api/ingredient/get
+          method: GET
+  fetchIngredientById:
+    handler: functions/ingredientController/fetchIngredientById.handler
+    events:
+      - httpApi:
+          path: /api/ingredient/get/{id}
+          method: GET
+  updateIngredientById:
+    handler: functions/ingredientController/updateIngredientById.handler
+    events:
+      - httpApi:
+          path: /api/ingredient/update/{id}
+          method: PATCH
+  deleteIngredientById:
+    handler: functions/ingredientController/deleteIngredientById.handler
+    events:
+      - httpApi:
+          path: /api/ingredient/delete/{id}
+          method: DELETE

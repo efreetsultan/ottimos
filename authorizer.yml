@@ -1,0 +1,2 @@
+myAuthorizer:
+    handler: authentication/authorizer.handler

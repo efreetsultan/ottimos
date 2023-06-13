@@ -1,0 +1,30 @@
+  addMenuItem:
+    handler: functions/menuItemController/addMenuItem.handler
+    events:
+      - httpApi:
+          path: /api/MenuItem/add
+          method: POST
+  fetchMenuItems:
+    handler: functions/menuItemController/fetchMenuItems.handler
+    events:
+      - httpApi:
+          path: /api/menuItem/get
+          method: GET
+  fetchMenuItemById:
+    handler: functions/menuItemController/fetchMenuItemById.handler
+    events:
+      - httpApi:
+          path: /api/menuItem/get/{id}
+          method: GET
+  updateMenuItemById:
+    handler: functions/menuItemController/updateMenuItemById.handler
+    events:
+      - httpApi:
+          path: /api/menuItem/update/{id}
+          method: PATCH
+  deleteMenuItemById:
+    handler: functions/menuItemController/deleteMenuItemById.handler
+    events:
+      - httpApi:
+          path: /api/menuItem/delete/{id}
+          method: DELETE
