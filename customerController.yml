@@ -1,0 +1,30 @@
+  addCustomer:
+    handler: functions/customerController/addCustomer.handler
+    events:
+      - httpApi:
+          path: /api/customer/add
+          method: POST
+  fetchCustomers:
+    handler: functions/customerController/fetchCustomers.handler
+    events:
+      - httpApi:
+          path: /api/customer/get
+          method: GET
+  fetchCustomerById:
+    handler: functions/customerController/fetchCustomerById.handler
+    events:
+      - httpApi:
+          path: /api/customer/get/{id}
+          method: GET
+  updateCustomerById:
+    handler: functions/customerController/updateCustomerById.handler
+    events:
+      - httpApi:
+          path: /api/customer/update/{id}
+          method: PATCH
+  deleteCustomerById:
+    handler: functions/customerController/deleteCustomerById.handler
+    events:
+      - httpApi:
+          path: /api/customer/delete/{id}
+          method: DELETE

@@ -1,0 +1,22 @@
+service: ottimosServerless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-2
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource:
+            - arn:aws:dynamodb:eu-west-2:837009352646:table/Customer
+resources:
+  ${file(./dynamoDb.yml)}
+functions:
+  ${file(./customerController.yml)}
+
+
+  
