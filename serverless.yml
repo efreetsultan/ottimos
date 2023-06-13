@@ -15,14 +15,14 @@ provider:
             - arn:aws:dynamodb:eu-west-2:837009352646:table/Customer
             - arn:aws:dynamodb:eu-west-2:837009352646:table/Order
             - arn:aws:dynamodb:eu-west-2:837009352646:table/MenuItem
+            - arn:aws:dynamodb:eu-west-2:837009352646:table/Allergen
+            - arn:aws:dynamodb:eu-west-2:837009352646:table/Ingredients
 resources:
-  ${file(./dynamoDb.yml)}
-  ${file(./cognito.yml)}
+  - ${file(./dynamoDb.yml)}
+  - ${file(./cognito.yml)}
 functions:
-  ${file(./customerController.yml)}
-  ${file(./orderController.yml)}
-  ${file(./menuItemController.yml)}
-
-
-
-  
+  - ${file(./customerController.yml)}
+  - ${file(./orderController.yml)}
+  - ${file(./menuItemController.yml)}
+  - ${file(./ingredientsController.yml)}
+  - ${file(./allergensController.yml)}
