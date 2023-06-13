@@ -38,6 +38,6 @@ jobs:
 
       - name: Deploy to AWS Lambda
         run: |
-          cd ./
+          cd $GITHUB_WORKSPACE
           npx serverless deploy
 
