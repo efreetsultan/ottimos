@@ -35,9 +35,11 @@ jobs:
 
       - name: Install Serverless Framework
         run: npm install -g serverless
+        
+      - name: Enter dir and deploy
+        uses: serverless/github-action@v3.2
+        with:
+          args: -c "cd ./ && serverless deploy"
+          entrypoint: /bin/sh
 
-      - name: Deploy to AWS Lambda
-        run: |
-          cd $GITHUB_WORKSPACE
-          npx serverless deploy
 
