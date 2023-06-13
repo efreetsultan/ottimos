@@ -25,4 +25,4 @@ functions:
   - ${file(./orderController.yml)}
   - ${file(./menuItemController.yml)}
   - ${file(./ingredientsController.yml)}
-  - ${file(./allergensController.yml)}
+  - ${file(./allergenController.yml)}
