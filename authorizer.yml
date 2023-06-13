@@ -1,2 +1,2 @@
-myAuthorizer:
-    handler: authentication/authorizer.handler
+  Authorizer:
+      handler: authentication/authorizer.handler

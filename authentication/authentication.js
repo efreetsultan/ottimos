@@ -15,7 +15,7 @@ const verifyToken = async (token) => {
     }
   };
 
-module.exports.handler = async (event) => {
+const authorizer = async (event) => {
   try {
     const token = event.authorizationToken;
 
@@ -49,3 +49,7 @@ const generatePolicy = (principalId, effect, resource) => {
     },
   };
 };
+
+module.exports = {
+    handler: authorizer
+  };
