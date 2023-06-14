@@ -6,7 +6,7 @@
           method: POST
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizer}
+            name: ${self:custom.googleOAuthAuthorizerName}
             arn: 
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
             
@@ -21,7 +21,7 @@
           method: GET
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizer}
+            name: ${self:custom.googleOAuthAuthorizerName}
             arn:
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
@@ -33,7 +33,7 @@
           method: GET
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizer}
+            name: ${self:custom.googleOAuthAuthorizerName}
             arn:
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
