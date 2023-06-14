@@ -7,8 +7,8 @@
           cors: true
           authorizer:
             name: ${self:custom.googleOAuthAuthorizerName}
-            arn:
-            Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
+            arn: 
+              Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
             
   fetchOrders:
     handler: functions/orderController/fetchOrders.handler
@@ -23,7 +23,7 @@
           authorizer:
             name: ${self:custom.googleOAuthAuthorizerName}
             arn:
-            Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
+              Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
   fetchOrderById:
     handler: functions/orderController/fetchOrderById.handler
@@ -35,7 +35,7 @@
           authorizer:
             name: ${self:custom.googleOAuthAuthorizerName}
             arn:
-            Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
+              Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
   updateOrderById:
     handler: functions/orderController/updateOrderById.handler
