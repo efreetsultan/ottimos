@@ -6,6 +6,7 @@ custom:
 
 provider:
   name: aws
+  stage: dev
   runtime: nodejs18.x
   region: eu-west-2
   iam:
