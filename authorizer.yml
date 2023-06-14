@@ -1,2 +1,2 @@
-  Authorizer:
-      handler: authentication/authorizer.handler
+  Authentication:
+      handler: functions/authentication/authentication.handler

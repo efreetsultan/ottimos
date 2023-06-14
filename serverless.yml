@@ -1,6 +1,9 @@
 service: ottimosServerless
 frameworkVersion: '3'
 
+custom:
+  googleOAuthAuthorizerName: googleOAuthAuthorizer
+
 provider:
   name: aws
   runtime: nodejs18.x
@@ -12,11 +15,11 @@ provider:
           Action:
             - dynamodb:*
           Resource:
-            - arn:aws:dynamodb:eu-west-2:837009352646:table/Customer
-            - arn:aws:dynamodb:eu-west-2:837009352646:table/Order
-            - arn:aws:dynamodb:eu-west-2:837009352646:table/MenuItem
-            - arn:aws:dynamodb:eu-west-2:837009352646:table/Allergen
-            - arn:aws:dynamodb:eu-west-2:837009352646:table/Ingredients
+            - Fn::Sub: 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/Customer'
+            - Fn::Sub: 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/Order'
+            - Fn::Sub: 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/MenuItem'
+            - Fn::Sub: 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/Allergen'
+            - Fn::Sub: 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/Ingredients'
 resources:
   - ${file(./dynamoDb.yml)}
   - ${file(./cognito.yml)}
@@ -27,3 +30,12 @@ functions:
   - ${file(./ingredientsController.yml)}
   - ${file(./allergenController.yml)}
   - ${file(./authorizer.yml)}
+
+outputs:
+  GoogleOAuthAuthorizerArn:
+    Value:
+      Fn::GetAtt:
+        - Authentication
+        - Arn
+    Export:
+      Name: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn

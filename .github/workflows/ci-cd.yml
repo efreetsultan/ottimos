@@ -48,3 +48,4 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
         GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET}}
+        AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}

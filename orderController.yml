@@ -4,9 +4,11 @@
       - httpApi:
           path: /api/order/add
           method: POST
+          cors: true
           authorizer:
-            name: myAuthorizer
-            type: COGNITO_USER_POOLS
+            arn:
+            Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
+            
   fetchOrders:
     handler: functions/orderController/fetchOrders.handler
     environment:
@@ -16,18 +18,18 @@
       - httpApi:
           path: /api/Order/get
           method: GET
-          authorizer:
-            name: myAuthorizer
-            type: COGNITO_USER_POOLS
+          cors: true
+          authorizer: aws_iam
+
   fetchOrderById:
     handler: functions/orderController/fetchOrderById.handler
     events:
       - httpApi:
           path: /api/order/get/{id}
           method: GET
-          authorizer:
-            name: myAuthorizer
-            type: COGNITO_USER_POOLS
+          cors: true
+          authorizer: aws_iam
+
   updateOrderById:
     handler: functions/orderController/updateOrderById.handler
     events:
