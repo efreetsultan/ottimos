@@ -6,23 +6,24 @@
           method: POST
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizerName}
+            name: googleOAuthAuthorizer
             arn: 
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
+
             
   fetchOrders:
     handler: functions/orderController/fetchOrders.handler
-    environment:
-      GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
-      GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
+    # environment:
+    #   GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
+    #   GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
     events:
       - httpApi:
           path: /api/Order/get
           method: GET
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizerName}
-            arn:
+            name: googleOAuthAuthorizer
+            arn: 
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
   fetchOrderById:
@@ -33,8 +34,8 @@
           method: GET
           cors: true
           authorizer:
-            name: ${self:custom.googleOAuthAuthorizerName}
-            arn:
+            name: googleOAuthAuthorizer
+            arn: 
               Fn::ImportValue: ${self:service}-${self:provider.stage}-GoogleOAuthAuthorizerArn
 
   updateOrderById:

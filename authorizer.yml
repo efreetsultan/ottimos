@@ -1,3 +1,5 @@
   Authentication:
-      handler: functions/authentication/authentication.handler
-      name: ${self:custom.googleOAuthAuthorizerName}
+   handler: functions/authentication/authentication.handler
+   name: googleOAuthAuthorizer
+
+

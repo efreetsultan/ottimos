@@ -25,12 +25,12 @@ resources:
   - ${file(./dynamoDb.yml)}
   - ${file(./cognito.yml)}
 functions:
+  - ${file(./authorizer.yml)}
   - ${file(./customerController.yml)}
   - ${file(./orderController.yml)}
   - ${file(./menuItemController.yml)}
   - ${file(./ingredientsController.yml)}
   - ${file(./allergenController.yml)}
-  - ${file(./authorizer.yml)}
 
 outputs:
   GoogleOAuthAuthorizerArn:
